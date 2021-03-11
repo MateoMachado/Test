@@ -1,0 +1,80 @@
+<div class="headerS" >
+    <app-header (sidebarToggle)="toggleSidebar()"></app-header>
+</div>
+
+<ng-sidebar-container>
+    <!-- A sidebar -->
+    <ng-sidebar [(opened)]="opened" position="left">
+        <div class="relative bg-white dark:bg-gray-800" >
+            <div class="flex flex-col sm:flex-row sm:justify-around">
+                <div class="w-72 h-screen">
+                    <nav class="mt-10 px-6 ">
+                        <div class=" relative ">
+                            <input type="text" id="rounded-email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Search"/>
+                            </div>
+                        <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " *ngIf="loadedFeature !== 'home'" href="#" (click)="navigate('home')">
+                            <span class="mx-4 text-lg font-normal">
+                                Home
+                            </span>
+                            <span class="flex-grow text-right">
+                            </span>
+                        </a>
+                        <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg bg-gray-100 dark:bg-gray-600" *ngIf="loadedFeature === 'home'" href="#" (click)="navigate('home')">
+                            <span class="mx-4 text-lg font-normal">
+                                Home
+                            </span>
+                            <span class="flex-grow text-right">
+                            </span>
+                        </a>
+                        <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-800 dark:text-gray-100 rounded-lg bg-gray-100 dark:bg-gray-600" *ngIf="loadedFeature === 'crearFrente'" href="#" (click)="navigate('crearFrente')">
+                            <span class="mx-4 text-lg font-normal">
+                                Crear frente
+                            </span>
+                            <span class="flex-grow text-right">
+                            </span>
+                            
+                        </a>
+                        <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-800 dark:text-gray-100 rounded-lg" *ngIf="loadedFeature !== 'crearFrente'" href="#" (click)="navigate('crearFrente')">
+                            <span class="mx-4 text-lg font-normal">
+                                Crear frente
+                            </span>
+                            <span class="flex-grow text-right">
+                            </span>
+                            </a>
+                        <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg bg-gray-100 dark:bg-gray-600" *ngIf="loadedFeature === 'verFrente'" href="#" (click)="navigate('verFrente')">
+                            <span class="mx-4 text-lg font-normal">
+                                Ver frente
+                            </span>
+                            <span class="flex-grow text-right">
+                            </span>
+                        </a>
+                        <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#" *ngIf="loadedFeature !== 'verFrente'" (click)="navigate('verFrente')">
+                            <span class="mx-4 text-lg font-normal">
+                                Ver frente
+                            </span>
+                            <span class="flex-grow text-right">
+                            </span>
+                        </a>
+                        <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#" (click)="navigate('editarFrente')">
+                            <span class="mx-4 text-lg font-normal">
+                                Editar frente
+                            </span>
+                            <span class="flex-grow text-right">
+                            </span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </ng-sidebar>
+  
+    <!-- Page content -->
+    <div ng-sidebar-content>
+        <app-home *ngIf="loadedFeature === 'home'"></app-home>
+        <app-front-list *ngIf="loadedFeature === 'crearFrente'"></app-front-list>
+        <app-view-front *ngIf="loadedFeature === 'verFrente'"></app-view-front>
+    </div>
+  
+  </ng-sidebar-container>
+
+
